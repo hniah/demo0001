@@ -1,0 +1,13 @@
+#categories-index-container
+	%table.categories
+		%thead
+			%tr
+				%th.title Title
+				%th.action Action
+		%tbody
+		- @categories.each do |category|
+			%tr
+				%td.title
+					= category.title
+				%td.action
+					
