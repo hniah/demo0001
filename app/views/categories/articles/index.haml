@@ -1,0 +1,14 @@
+#category-articles-index-container
+	%table.articles
+		%caption
+			Articles
+		%thead
+			%tr
+				%th.title Title
+				%th.action Action
+		%tbody
+			- @articles.each do |article|
+				%tr
+					%td.title
+						= article.title
+					%td.action

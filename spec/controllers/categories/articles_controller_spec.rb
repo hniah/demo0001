@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Category::ArticlesController do
+describe Categories::ArticlesController do
 	describe 'GET #index' do
 		def do_request
 			get :index, category_id: category.id

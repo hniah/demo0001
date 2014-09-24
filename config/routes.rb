@@ -5,10 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'categories#index'
 
-  resources :categories, only: [:index] 
-
-  namespace :category do
-    resources :articles, only: [:index]
+  resources :categories, only: [:index] do
+    resources :articles, only: [:index], controller: 'categories/articles'
   end
 
   # Example of regular route:
