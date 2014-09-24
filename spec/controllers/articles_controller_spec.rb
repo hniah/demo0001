@@ -8,7 +8,7 @@ describe ArticlesController do
 
 		let!(:articles) { create_list(:article, 2) }
 
-		it 'populated an array of articles' do
+		it 'populates an array of articles' do
 			do_request
 			expect(assigns(:articles).size).to eq 2
 		end

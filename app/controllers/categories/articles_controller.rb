@@ -5,6 +5,10 @@ class Categories::ArticlesController < ApplicationController
 		@articles = @category.articles
 	end
 
+	def new
+		@article = @category.articles.new
+	end
+
 	private
 
 	def grab_category_from_category_id
