@@ -1,0 +1,12 @@
+.shared-articles-container
+	%table.articles
+		%thead
+			%tr
+				%th.title Title
+				%th.action Action
+		%tbody
+			- @articles.each do |article|
+				%tr
+					%td.title
+						= article.title
+					%td.action

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :articles, only: [:index], controller: 'categories/articles'
   end
 
+  resources :articles, only: [:index]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
