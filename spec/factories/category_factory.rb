@@ -1,5 +1,5 @@
 FactoryGirl.define  do
-	factory :category do
-		sequence(:title) { |n| "Category-#{n}" }
+	factory :category do |f|
+		f.title { Faker::Lorem.sentence }
 	end
 end
