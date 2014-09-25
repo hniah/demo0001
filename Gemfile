@@ -40,6 +40,7 @@ group :development, :test do
 	gem 'shoulda'
 	gem 'capybara'
 	gem 'faker', '~> 1.4.3'
+	gem 'awesome_print'
 end
 
 # Use ActiveModel has_secure_password
