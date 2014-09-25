@@ -39,6 +39,7 @@ group :development, :test do
 	gem 'factory_girl_rails'
 	gem 'shoulda'
 	gem 'capybara'
+	gem 'capybara-webkit'
 	gem 'faker', '~> 1.4.3'
 	gem 'awesome_print'
 end
