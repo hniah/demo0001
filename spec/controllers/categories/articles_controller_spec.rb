@@ -41,13 +41,28 @@ describe Categories::ArticlesController do
 				post :create, { category_id: category.id, article: attributes_for(:article) }
 			end
 
-			it 'create a new article' do
+			it 'creates a new article' do
 				expect{do_request}.to change(Article, :count).by(1)
 			end
 
 			it 'redirects to the homepage' do
 				do_request
 				expect(response).to redirect_to root_url
+			end
+		end
+
+		context 'with invalid attributes' do
+			def do_request
+				post :create, { category_id: category.id, article: attributes_for(:invalid_article) }
+			end
+
+			it 'does not save the new article' do
+				expect{do_request}.to_not change(Article, :count)
+			end
+
+			it 're-renders to the :new view' do
+				do_request
+				expect(response).to render_template :new
 			end
 		end
 	end
