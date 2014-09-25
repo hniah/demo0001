@@ -5,6 +5,10 @@ class Categories::ArticlesController < ApplicationController
 		@articles = @category.articles
 	end
 
+	def show
+		@article = @category.articles.find(article_id)
+	end
+
 	def new
 		@article = @category.articles.new
 	end
@@ -27,5 +31,9 @@ class Categories::ArticlesController < ApplicationController
 
 	def create_params
     	params.require(:article).permit(:title, :description)
+	end
+
+	def article_id
+		params.require(:id)
 	end
 end

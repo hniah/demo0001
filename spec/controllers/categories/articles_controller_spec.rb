@@ -20,6 +20,24 @@ describe Categories::ArticlesController do
 		end
 	end
 
+	describe 'GET #show' do
+		def do_request
+			get :show, { category_id: article.category.id, id: article.id }
+		end
+
+		let!(:article) { create(:article) }
+
+		it 'assigns the requested article to @article' do
+			do_request
+			expect(assigns(:article)).to eq article
+		end
+
+		it 'renders the :show view' do
+			do_request
+			expect(response).to render_template :show
+		end
+	end
+
 	describe 'GET #new' do
 		def do_request
 			get :new, category_id: category.id
