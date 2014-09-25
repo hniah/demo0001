@@ -97,4 +97,42 @@ describe Categories::ArticlesController do
 			expect(response).to render_template :edit
 		end
 	end
+
+	describe 'PUT #update' do
+		def do_request
+			put :update, { category_id: article.category.id, id: article.id, article: update_params }
+		end
+
+		let!(:article)  { create(:article) }
+
+		context 'with valid attributes' do
+			let(:new_title) 	{ 'New title' }
+			let(:update_params) { attributes_for(:article, title: new_title) }
+
+			it "changes @article's attributes" do
+				do_request
+				article.reload
+				expect(article.title).to eq new_title
+			end
+
+			it 'redirects to the updated contact' do
+				do_request
+				expect(response).to redirect_to [article.category, article]
+			end
+		end
+
+		context 'with invalid attributes' do
+			let(:update_params) { attributes_for(:invalid_article) }
+
+			it "does not change @article's attributes" do
+				do_request
+				expect(assigns(:article)).to eq article
+			end
+
+			it 're-renders to the :edit view' do
+				do_request
+				expect(response).to render_template :edit
+			end
+		end
+	end
 end

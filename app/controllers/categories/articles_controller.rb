@@ -27,6 +27,16 @@ class Categories::ArticlesController < ApplicationController
 		@article = @category.articles.find(article_id)
 	end
 
+	def update
+		@article = @category.articles.find(article_id)
+
+		if @article.update_attributes(update_params)
+			redirect_to [@category, @article], notice: 'Article was successfully updated.'
+		else
+			render :edit
+		end
+	end
+
 	private
 
 	def grab_category_from_category_id
@@ -35,6 +45,10 @@ class Categories::ArticlesController < ApplicationController
 
 	def create_params
     	params.require(:article).permit(:title, :description)
+	end
+
+	def update_params
+		create_params
 	end
 
 	def article_id
