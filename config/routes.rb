@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'categories#index'
 
   resources :categories, only: [:index] do
-    resources :articles, only: [:index, :show, :new, :create, :edit, :update], controller: 'categories/articles'
+    resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy], controller: 'categories/articles'
   end
 
   resources :articles, only: [:index]

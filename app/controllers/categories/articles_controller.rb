@@ -37,6 +37,12 @@ class Categories::ArticlesController < ApplicationController
 		end
 	end
 
+	def destroy
+		@article = @category.articles.find(article_id)
+		@article.destroy
+		redirect_to category_articles_url(@category)
+	end
+
 	private
 
 	def grab_category_from_category_id

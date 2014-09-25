@@ -135,4 +135,21 @@ describe Categories::ArticlesController do
 			end
 		end
 	end
+
+	describe 'DELETE #destroy' do
+		def do_request
+			delete :destroy, { category_id: article.category.id, id: article.id }
+		end
+
+		let!(:article) { create(:article) }
+
+		it 'deletes the article' do
+			expect{do_request}.to change(Article, :count).by(-1)
+		end
+
+		it 'redirects to articles listing' do
+			do_request
+			expect(response).to redirect_to category_articles_url(article.category)
+		end
+	end
 end
