@@ -1,4 +1,4 @@
 #category-articles-index-container
 	%h1= "Articles for #{@category.title}"
-	%p= link_to 'Create', new_category_article_path(@category)
+	%p= link_to 'Create', new_category_article_path(@category), class: 'btn btn-default'
 	= render 'articles/articles'

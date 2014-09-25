@@ -4,3 +4,4 @@
 	%p= @article.category.title
 	%h4 Description
 	%p= @article.description
+	= link_to 'Edit Article', edit_category_article_path(@category, @article), class: 'btn btn-default'

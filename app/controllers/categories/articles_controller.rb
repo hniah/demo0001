@@ -23,10 +23,14 @@ class Categories::ArticlesController < ApplicationController
 		end
 	end
 
+	def edit
+		@article = @category.articles.find(article_id)
+	end
+
 	private
 
 	def grab_category_from_category_id
-		@category = Category.find(params[:category_id]) 
+		@category = Category.find(category_id) 
 	end
 
 	def create_params
@@ -35,5 +39,9 @@ class Categories::ArticlesController < ApplicationController
 
 	def article_id
 		params.require(:id)
+	end
+
+	def category_id
+		params.require(:category_id)
 	end
 end

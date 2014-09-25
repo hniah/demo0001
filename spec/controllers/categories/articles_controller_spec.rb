@@ -84,4 +84,17 @@ describe Categories::ArticlesController do
 			end
 		end
 	end
+
+	describe 'GET #edit' do
+		def do_request
+			get :edit, { category_id: article.category.id, id: article.id }
+		end
+
+		let!(:article) { create(:article) }
+
+		it 'renders the :edit view' do
+			do_request
+			expect(response).to render_template :edit
+		end
+	end
 end
