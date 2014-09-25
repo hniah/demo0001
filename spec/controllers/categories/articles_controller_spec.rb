@@ -32,4 +32,23 @@ describe Categories::ArticlesController do
 			expect(response).to render_template :new
 		end
 	end
+
+	describe 'POST #create' do
+		let!(:category) { create(:category) }
+
+		context 'with valid attributes' do
+			def do_request
+				post :create, { category_id: category.id, article: attributes_for(:article) }
+			end
+
+			it 'create a new article' do
+				expect{do_request}.to change(Article, :count).by(1)
+			end
+
+			it 'redirects to the homepage' do
+				do_request
+				expect(response).to redirect_to root_url
+			end
+		end
+	end
 end
