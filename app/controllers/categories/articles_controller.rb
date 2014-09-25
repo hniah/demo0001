@@ -17,7 +17,7 @@ class Categories::ArticlesController < ApplicationController
 		@article = @category.articles.new(create_params)
 
 		if @article.save
-			redirect_to root_url, notice: 'Article was successfully created.'
+			redirect_to [@category, @article], notice: 'Article was successfully created.'
 		else
 			render :new
 		end

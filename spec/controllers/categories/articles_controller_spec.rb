@@ -63,9 +63,9 @@ describe Categories::ArticlesController do
 				expect{do_request}.to change(Article, :count).by(1)
 			end
 
-			it 'redirects to the homepage' do
+			it 'redirects to the new article' do
 				do_request
-				expect(response).to redirect_to root_url
+				expect(response).to redirect_to [category, Article.last]
 			end
 		end
 
